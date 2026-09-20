@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GULI Nutrition Morocco | المكملات الغذائية اللذيذة فالمغرب</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Readex Pro for modern Arabic UI -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Style Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            green: '#10B981',
+                            darkGreen: '#047857',
+                            pink: '#EC4899',
+                            rose: '#F43F5E',
+                            purple: '#8B5CF6',
+                            blue: '#1E40AF',
+                            orange: '#F97316',
+                            gold: '#F59E0B',
+                            dark: '#0F172A'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Readex Pro', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Readex Pro', sans-serif;
+            background-color: #FAFAFC;
+        }
+        .bg-glass {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+        }
+        .product-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .product-card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.08);
+        }
+        .badge-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(1.05); }
+        }
+        /* Custom scrollbar for drawer */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-emerald-500 selection:text-white">
+
+    <!-- Announcement Bar -->
+    <div class="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 text-white text-xs sm:text-sm py-2.5 px-4 text-center font-medium shadow-sm relative z-50">
+        <div class="container mx-auto flex justify-center items-center gap-2">
+            <span class="bg-white/20 text-white text-[11px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">عرض خاص</span>
+            <span>🚚 توصيل مجاني لجميع مدن المغرب للطلبات الفوق من 300 درهم + الدفع عند الاستلام</span>
+        </div>
+    </div>
+
+    <!-- Main Sticky Header -->
+    <header class="sticky top-0 z-40 bg-glass border-b border-slate-100 transition-all duration-300 shadow-sm">
+        <div class="container mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            
+            <!-- Mobile Menu Trigger -->
+            <button onclick="toggleMobileMenu()" class="lg:hidden text-slate-700 text-xl p-2 focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center text-white font-extrabold text-xl shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+                    G
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-2xl font-black tracking-tight text-slate-900 group-hover:text-emerald-600 transition-colors">GULI<span class="text-emerald-500">.</span></span>
+                    <span class="text-[10px] text-slate-400 -mt-1 font-semibold tracking-widest uppercase">Nutrition Morocco</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden lg:flex items-center gap-8 font-medium text-slate-600 text-sm">
+                <a href="#products" class="hover:text-emerald-600 transition-colors">المنتجات الـ 5</a>
+                <a href="#bundles" class="hover:text-emerald-600 transition-colors flex items-center gap-1.5 text-emerald-600 font-bold">
+                    <span>الباكات والعروض</span>
+                    <span class="bg-rose-500 text-white text-[10px] px-2 py-0.5 rounded-full font-bold badge-pulse">وفر حتى 30%</span>
+                </a>
+                <a href="#why-guli" class="hover:text-emerald-600 transition-colors">علاش GULI؟</a>
+                <a href="#reviews" class="hover:text-emerald-600 transition-colors">آراء الزبناء</a>
+                <a href="#faq" class="hover:text-emerald-600 transition-colors">الأسئلة الشائعة</a>
+            </nav>
+
+            <!-- Actions: Search & Cart Button -->
+            <div class="flex items-center gap-3">
+                <a href="#bundles" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 rounded-full transition-colors border border-emerald-200">
+                    🎁 اختر باكتك
+                </a>
+                
+                <button onclick="toggleCartDrawer()" class="relative p-2.5 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-600 rounded-full text-slate-700 transition-all">
+                    <i class="fa-solid fa-bag-shopping text-lg"></i>
+                    <span id="cartBadge" class="absolute -top-1 -right-1 bg-rose-500 text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Nav -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-100 px-6 py-4 flex flex-col gap-4 text-sm font-medium text-slate-700">
+            <a href="#products" onclick="toggleMobileMenu()" class="py-2 border-b border-slate-50">المنتجات الـ 5</a>
+            <a href="#bundles" onclick="toggleMobileMenu()" class="py-2 border-b border-slate-50 text-emerald-600 font-bold flex justify-between items-center">
+                <span>الباكات والعروض</span>
+                <span class="bg-rose-100 text-rose-600 text-xs px-2 py-0.5 rounded-full">خصومات</span>
+            </a>
+            <a href="#why-guli" onclick="toggleMobileMenu()" class="py-2 border-b border-slate-50">علاش GULI؟</a>
+            <a href="#reviews" onclick="toggleMobileMenu()" class="py-2 border-b border-slate-50">آراء الزبناء</a>
+            <a href="#faq" onclick="toggleMobileMenu()" class="py-2">الأسئلة الشائعة</a>
+        </div>
+    </header>
+
+    <!-- Hero Banner Section -->
+    <section class="relative overflow-hidden pt-8 pb-16 lg:pt-16 lg:pb-24 bg-gradient-to-b from-emerald-50/50 via-white to-slate-50">
+        <!-- Floating Decorative Circles -->
+        <div class="absolute -top-20 -right-20 w-96 h-96 bg-emerald-200/40 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/2 -left-20 w-80 h-80 bg-rose-200/30 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Text Content Column -->
+                <div class="lg:col-span-7 text-center lg:text-right space-y-6">
+                    
+                    <div class="inline-flex items-center gap-2 bg-white border border-emerald-200 px-4 py-2 rounded-full shadow-sm">
+                        <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-ping"></span>
+                        <span class="text-xs sm:text-sm font-semibold text-emerald-800">أول براند مغربي للمكملات على شكل حلوى 🇲🇦</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.2] tracking-tight">
+                        قولي باي باي للحبوب المرة، واستمتعي بـ <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-500 to-rose-500">حلوى صحية ولذيذة!</span>
+                    </h1>
+
+                    <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
+                        مكملات غذائية طبيعية 100% تعتني بشعرك، بشرتك، نومك، وطاقتك اليومية. بدون سكر مضاف، سهلة الهضم، وبمذاق الفواكه الطبيعية اللذيذة.
+                    </p>
+
+                    <!-- CTAs & Proof -->
+                    <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#bundles" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold rounded-2xl shadow-xl shadow-emerald-600/25 transition-all transform hover:-translate-y-0.5 text-center text-base">
+                            اكتشفي الباكات واكتسبي الخصم 🎁
+                        </a>
+                        <a href="#products" class="w-full sm:w-auto px-6 py-4 bg-white hover:bg-slate-100 text-slate-800 font-bold rounded-2xl border border-slate-200 transition-colors text-center text-base">
+                            تسوقي المنتجات الفردية
+                        </a>
+                    </div>
+
+                    <!-- Social Proof Mini Stats -->
+                    <div class="pt-6 border-t border-slate-200/60 flex items-center justify-center lg:justify-start gap-6 text-slate-600 text-xs sm:text-sm">
+                        <div class="flex items-center gap-1.5">
+                            <div class="flex text-amber-400">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="font-bold text-slate-900">4.9/5</span>
+                        </div>
+                        <div class="h-4 w-px bg-slate-300"></div>
+                        <div>+12,000 زبون سعيد بالمغرب</div>
+                        <div class="h-4 w-px bg-slate-300 hidden sm:block"></div>
+                        <div class="hidden sm:block text-emerald-600 font-medium">✓ نتائج مضمونة</div>
+                    </div>
+
+                </div>
+
+                <!-- Visual Product Stack Column -->
+                <div class="lg:col-span-5 relative flex justify-center">
+                    
+                    <div class="relative w-full max-w-md aspect-square rounded-3xl bg-gradient-to-tr from-emerald-100 via-rose-50 to-purple-100 p-6 flex items-center justify-center shadow-2xl border border-white">
+                        
+                        <!-- Main Stack Visual Container -->
+                        <div class="grid grid-cols-2 gap-4 w-full">
+                            
+                            <div class="bg-white p-4 rounded-2xl shadow-md border border-rose-100 flex flex-col items-center text-center transform -rotate-3 hover:rotate-0 transition-transform">
+                                <div class="w-16 h-16 rounded-full bg-rose-100 flex items-center justify-center text-rose-500 text-2xl font-bold mb-2">
+                                    💅
+                                </div>
+                                <span class="font-extrabold text-sm text-slate-900">Biotin Glow</span>
+                                <span class="text-[11px] text-rose-500 font-semibold">شعر وأظافر</span>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-2xl shadow-md border border-pink-100 flex flex-col items-center text-center transform rotate-3 hover:rotate-0 transition-transform">
+                                <div class="w-16 h-16 rounded-full bg-pink-100 flex items-center justify-center text-pink-500 text-2xl font-bold mb-2">
+                                    ✨
+                                </div>
+                                <span class="font-extrabold text-sm text-slate-900">Collagen Youth</span>
+                                <span class="text-[11px] text-pink-500 font-semibold">نضارة البشرة</span>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-2xl shadow-md border border-blue-100 flex flex-col items-center text-center transform rotate-2 hover:rotate-0 transition-transform">
+                                <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-2xl font-bold mb-2">
+                                    🌙
+                                </div>
+                                <span class="font-extrabold text-sm text-slate-900">Melatonin Sleep</span>
+                                <span class="text-[11px] text-blue-600 font-semibold">نوم عميق</span>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-2xl shadow-md border border-amber-100 flex flex-col items-center text-center transform -rotate-2 hover:rotate-0 transition-transform">
+                                <div class="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 text-2xl font-bold mb-2">
+                                    🍊
+                                </div>
+                                <span class="font-extrabold text-sm text-slate-900">Multivitamin</span>
+                                <span class="text-[11px] text-amber-600 font-semibold">طاقة ومناعة</span>
+                            </div>
+
+                        </div>
+
+                        <!-- Floating Central Badge -->
+                        <div class="absolute inset-x-0 bottom-4 mx-auto w-3/4 bg-slate-900 text-white py-3 px-4 rounded-2xl shadow-xl flex items-center justify-between text-xs">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xl">🍬</span>
+                                <div>
+                                    <div class="font-bold">60 حبة لذيذة</div>
+                                    <div class="text-[10px] text-slate-400">تكفي لمدة شهر كامل</div>
+                                </div>
+                            </div>
+                            <span class="bg-emerald-500 text-white px-2.5 py-1 rounded-lg font-bold text-[10px]">100% طبيعي</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Features Strip -->
+    <section class="bg-white border-y border-slate-100 py-8">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                
+                <div class="flex flex-col items-center gap-2 p-3">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl font-bold">
+                        🌱
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm">مكونات طبيعية 100%</h3>
+                    <p class="text-xs text-slate-500">مستخلصات الفواكه والنباتات النقية</p>
+                </div>
+
+                <div class="flex flex-col items-center gap-2 p-3">
+                    <div class="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center text-xl font-bold">
+                        🚫
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm">بدون سكر مضاف</h3>
+                    <p class="text-xs text-slate-500">حلوى صحية ولذيذة بدون سعرات فائضة</p>
+                </div>
+
+                <div class="flex flex-col items-center gap-2 p-3">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl font-bold">
+                        🚚
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm">توصيل سريع فالمغرب</h3>
+                    <p class="text-xs text-slate-500">توصلك الأمانة بين 24 لـ 48 ساعة</p>
+                </div>
+
+                <div class="flex flex-col items-center gap-2 p-3">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl font-bold">
+                        💵
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm">الدفع عند الاستلام</h3>
+                    <p class="text-xs text-slate-500">شوف أمانتك وعاد خلص العون</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Products Section (5 Individual Products) -->
+    <section id="products" class="py-16 lg:py-24">
+        <div class="container mx-auto px-4 sm:px-6">
+            
+            <div class="text-center max-w-3xl mx-auto space-y-3 mb-12">
+                <span class="text-xs font-bold text-emerald-600 bg-emerald-100/80 px-3 py-1 rounded-full uppercase tracking-wider">تشكيلة GULI الرسمية</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900">المنتجات الخمسة الأساسية لعنايتك اليومية</h2>
+                <p class="text-slate-600 text-sm sm:text-base">اختر الفئة اللي كتحتاجها، ولا دمجهم فباك واحد باش تستافد من التخفيض والشحن المجاني.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+
+                <!-- Product 1: Biotin -->
+                <div class="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm product-card-hover flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-3 right-3 bg-rose-500 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full">
+                        الشعر والأظافر
+                    </div>
+                    
+                    <div class="pt-6 pb-4 flex flex-col items-center text-center">
+                        <div class="w-24 h-28 bg-gradient-to-b from-rose-100 to-rose-50 rounded-2xl flex items-center justify-center text-4xl shadow-inner mb-4 relative">
+                            💅
+                            <span class="absolute -bottom-2 bg-white border border-rose-200 text-rose-600 text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm">Biotin + Zinc</span>
+                        </div>
+                        <h3 class="font-extrabold text-slate-900 text-lg">GULI Biotin Glow</h3>
+                        <p class="text-slate-500 text-xs mt-1 leading-relaxed">وقف تساقط الشعر، طول البصيلات وتقوية الأظافر الهشة.</p>
+                        
+                        <div class="flex items-center gap-1 mt-3 text-amber-400 text-xs">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span class="text-slate-400 text-[11px] mr-1">(142)</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-400 line-through">249 DH</span>
+                            <div class="text-lg font-black text-slate-900">189 <span class="text-xs font-normal text-slate-500">DH</span></div>
+                        </div>
+                        <button onclick="addToCart('p1', 'GULI Biotin Glow', 189, '💅')" class="bg-rose-500 hover:bg-rose-600 text-white w-10 h-10 rounded-xl flex items-center justify-center transition-colors shadow-md shadow-rose-500/20">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 2: Collagen -->
+                <div class="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm product-card-hover flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-3 right-3 bg-pink-500 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full">
+                        البشرة والنضارة
+                    </div>
+
+                    <div class="pt-6 pb-4 flex flex-col items-center text-center">
+                        <div class="w-24 h-28 bg-gradient-to-b from-pink-100 to-pink-50 rounded-2xl flex items-center justify-center text-4xl shadow-inner mb-4 relative">
+                            ✨
+                            <span class="absolute -bottom-2 bg-white border border-pink-200 text-pink-600 text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm">Collagen + Vit C</span>
+                        </div>
+                        <h3 class="font-extrabold text-slate-900 text-lg">GULI Collagen Youth</h3>
+                        <p class="text-slate-500 text-xs mt-1 leading-relaxed">إعطاء نضارة فورية للبشرة، مرونة، وتحسين الهالات السوداء.</p>
+
+                        <div class="flex items-center gap-1 mt-3 text-amber-400 text-xs">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <span class="text-slate-400 text-[11px] mr-1">(98)</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-400 line-through">249 DH</span>
+                            <div class="text-lg font-black text-slate-900">189 <span class="text-xs font-normal text-slate-500">DH</span></div>
+                        </div>
+                        <button onclick="addToCart('p2', 'GULI Collagen Youth', 189, '✨')" class="bg-pink-500 hover:bg-pink-600 text-white w-10 h-10 rounded-xl flex items-center justify-center transition-colors shadow-md shadow-pink-500/20">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 3: Melatonin -->
+                <div class="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm product-card-hover flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-3 right-3 bg-blue-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full">
+                        النوم والاسترخاء
+                    </div>
+
+                    <div class="pt-6 pb-4 flex flex-col items-center text-center">
+                        <div class="w-24 h-28 bg-gradient-to-b from-blue-100 to-blue-50 rounded-2xl flex items-center justify-center text-4xl shadow-inner mb-4 relative">
+                            🌙
+                            <span class="absolute -bottom-2 bg-white border border-blue-200 text-blue-600 text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm">Melatonin 5mg</span>
+                        </div>
+                        <h3 class="font-extrabold text-slate-900 text-lg">GULI Melatonin Sleep</h3>
+                        <p class="text-slate-500 text-xs mt-1 leading-relaxed">القضاء على الأرق، تنظيم ساعات النوم، والنوم بدون استيقاظ.</p>
+
+                        <div class="flex items-center gap-1 mt-3 text-amber-400 text-xs">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span class="text-slate-400 text-[11px] mr-1">(186)</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-400 line-through">249 DH</span>
+                            <div class="text-lg font-black text-slate-900">189 <span class="text-xs font-normal text-slate-500">DH</span></div>
+                        </div>
+                        <button onclick="addToCart('p3', 'GULI Melatonin Sleep', 189, '🌙')" class="bg-blue-600 hover:bg-blue-700 text-white w-10 h-10 rounded-xl flex items-center justify-center transition-colors shadow-md shadow-blue-600/20">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 4: Magnesium -->
+                <div class="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm product-card-hover flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-3 right-3 bg-purple-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full">
+                        الأعصاب والعضلات
+                    </div>
+
+                    <div class="pt-6 pb-4 flex flex-col items-center text-center">
+                        <div class="w-24 h-28 bg-gradient-to-b from-purple-100 to-purple-50 rounded-2xl flex items-center justify-center text-4xl shadow-inner mb-4 relative">
+                            💜
+                            <span class="absolute -bottom-2 bg-white border border-purple-200 text-purple-600 text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm">Magnesium Complex</span>
+                        </div>
+                        <h3 class="font-extrabold text-slate-900 text-lg">GULI Magnesium Relax</h3>
+                        <p class="text-slate-500 text-xs mt-1 leading-relaxed">تقليل التوتر والستريس اليومي، وإرخاء التشنجات العضلية.</p>
+
+                        <div class="flex items-center gap-1 mt-3 text-amber-400 text-xs">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span class="text-slate-400 text-[11px] mr-1">(115)</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-400 line-through">249 DH</span>
+                            <div class="text-lg font-black text-slate-900">189 <span class="text-xs font-normal text-slate-500">DH</span></div>
+                        </div>
+                        <button onclick="addToCart('p4', 'GULI Magnesium Relax', 189, '💜')" class="bg-purple-600 hover:bg-purple-700 text-white w-10 h-10 rounded-xl flex items-center justify-center transition-colors shadow-md shadow-purple-600/20">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 5: Multivitamin -->
+                <div class="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm product-card-hover flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-3 right-3 bg-amber-500 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full">
+                        المناعة والطاقة
+                    </div>
+
+                    <div class="pt-6 pb-4 flex flex-col items-center text-center">
+                        <div class="w-24 h-28 bg-gradient-to-b from-amber-100 to-amber-50 rounded-2xl flex items-center justify-center text-4xl shadow-inner mb-4 relative">
+                            🍊
+                            <span class="absolute -bottom-2 bg-white border border-amber-200 text-amber-600 text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm">13 Essential Vits</span>
+                        </div>
+                        <h3 class="font-extrabold text-slate-900 text-lg">GULI Multivitamin</h3>
+                        <p class="text-slate-500 text-xs mt-1 leading-relaxed">تزويد الجسم بالفيتامينات الأساسية ومحاربة الخمول والعياد.</p>
+
+                        <div class="flex items-center gap-1 mt-3 text-amber-400 text-xs">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span class="text-slate-400 text-[11px] mr-1">(210)</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-400 line-through">249 DH</span>
+                            <div class="text-lg font-black text-slate-900">189 <span class="text-xs font-normal text-slate-500">DH</span></div>
+                        </div>
+                        <button onclick="addToCart('p5', 'GULI Multivitamin Power', 189, '🍊')" class="bg-amber-500 hover:bg-amber-600 text-white w-10 h-10 rounded-xl flex items-center justify-center transition-colors shadow-md shadow-amber-500/20">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Bundles & Savings Section (5 Bundles) -->
+    <section id="bundles" class="py-16 lg:py-24 bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800 text-white relative overflow-hidden">
+        <!-- Background Glowing Orbs -->
+        <div class="absolute top-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-1/4 w-96 h-96 bg-rose-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            
+            <div class="text-center max-w-3xl mx-auto space-y-3 mb-14">
+                <span class="text-xs font-bold text-emerald-400 bg-emerald-950 border border-emerald-800/80 px-3.5 py-1.5 rounded-full uppercase tracking-wider">
+                    🔥 العروض والباكات الموفرة
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-black">اختر الباك المناسب واقتسني الخصم الشامل!</h2>
+                <p class="text-slate-400 text-sm sm:text-base">دمج أكثر من منتج كيعطيك نتائج متكاملة + توفير كبير + توصيل مجاني لجميع مدن المغرب.</p>
+            </div>
+
+            <!-- Bundles Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+
+                <!-- Bundle 1: Beauty Glow -->
+                <div class="bg-slate-800/80 border border-slate-700/60 rounded-3xl p-6 flex flex-col justify-between relative hover:border-pink-500/50 transition-all shadow-xl">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-pink-500/20 text-pink-300 border border-pink-500/30 text-xs font-bold px-3 py-1 rounded-full">باك الجمال والشعر 💅✨</span>
+                            <span class="bg-rose-500 text-white text-[11px] font-black px-2.5 py-1 rounded-lg">وفر 58 DH</span>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white">Pack Beauty Glow</h3>
+                        <p class="text-slate-300 text-xs leading-relaxed">الدمج المثالي للعناية الشاملة بشعرك من الجذور ونضارة بشرتك من الداخل.</p>
+
+                        <!-- Included items list -->
+                        <div class="bg-slate-900/60 rounded-2xl p-4 space-y-2 border border-slate-700/40 text-xs">
+                            <div class="flex items-center justify-between text-slate-200">
+                                <span>1x GULI Biotin Glow (الشعر والأظافر)</span>
+                                <span>💅</span>
+                            </div>
+                            <div class="flex items-center justify-between text-slate-200 pt-2 border-t border-slate-800">
+                                <span>1x GULI Collagen Youth (البشرة والنضارة)</span>
+                                <span>✨</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-2 text-xs text-emerald-400 font-medium pt-1">
+                            <i class="fa-solid fa-truck-fast"></i>
+                            <span>توصيل مجاني شامل للطلب</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-700/80 mt-6 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-400 line-through">378 DH</span>
+                            <div class="text-2xl font-black text-white">320 <span class="text-xs text-slate-400">DH</span></div>
+                        </div>
+                        <button onclick="addToCart('b1', 'Pack Beauty Glow (Biotin + Collagen)', 320, '🎁')" class="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold px-5 py-3 rounded-2xl transition-all shadow-lg shadow-pink-500/20 text-xs flex items-center gap-2">
+                            <span>اطلب الباك</span>
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bundle 2: Relax & Sleep -->
+                <div class="bg-slate-800/80 border border-slate-700/60 rounded-3xl p-6 flex flex-col justify-between relative hover:border-blue-500/50 transition-all shadow-xl">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-bold px-3 py-1 rounded-full">باك النوم والراحة 🌙💜</span>
+                            <span class="bg-rose-500 text-white text-[11px] font-black px-2.5 py-1 rounded-lg">وفر 58 DH</span>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white">Pack Relax & Sleep</h3>
+                        <p class="text-slate-300 text-xs leading-relaxed">للتخلص من الستريس وإرخاء العضلات لنوم عميق وهادئ بدون استيقاظ.</p>
+
+                        <!-- Included items list -->
+                        <div class="bg-slate-900/60 rounded-2xl p-4 space-y-2 border border-slate-700/40 text-xs">
+                            <div class="flex items-center justify-between text-slate-200">
+                                <span>1x GULI Melatonin Sleep (النوم العميق)</span>
+                                <span>🌙</span>
+                            </div>
+                            <div class="flex items-center justify-between text-slate-200 pt-2 border-t border-slate-800">
+                                <span>1x GULI Magnesium Relax (إرخاء العضلات)</span>
+                                <span>💜</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-2 text-xs text-emerald-400 font-medium pt-1">
+                            <i class="fa-solid fa-truck-fast"></i>
+                            <span>توصيل مجاني شامل للطلب</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-700/80 mt-6 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-400 line-through">378 DH</span>
+                            <div class="text-2xl font-black text-white">320 <span class="text-xs text-slate-400">DH</span></div>
+                        </div>
+                        <button onclick="addToCart('b2', 'Pack Relax & Sleep (Melatonin + Magnesium)', 320, '🎁')" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold px-5 py-3 rounded-2xl transition-all shadow-lg shadow-blue-600/20 text-xs flex items-center gap-2">
+                            <span>اطلب الباك</span>
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bundle 3: Ultimate Trio (Featured Best Seller) -->
+                <div class="bg-gradient-to-b from-emerald-950/90 to-slate-900 border-2 border-emerald-500 rounded-3xl p-6 flex flex-col justify-between relative transition-all shadow-2xl scale-100 lg:-translate-y-2">
+                    <div class="absolute -top-3.5 inset-x-0 mx-auto w-max bg-emerald-500 text-slate-950 font-black text-xs px-4 py-1 rounded-full shadow-lg">
+                        ⭐ الأكثر طلباً فالمغرب ⭐
+                    </div>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold px-3 py-1 rounded-full">باك العناية الثلاثي 👑</span>
+                            <span class="bg-rose-500 text-white text-[11px] font-black px-2.5 py-1 rounded-lg">وفر 118 DH</span>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white">Pack Ultimate Trio</h3>
+                        <p class="text-slate-300 text-xs leading-relaxed">الجمع الشامل للجمال، النضارة، والمناعة اليومية فباك واحد متكامل.</p>
+
+                        <!-- Included items list -->
+                        <div class="bg-slate-900/80 rounded-2xl p-4 space-y-2 border border-emerald-800/50 text-xs">
+                            <div class="flex items-center justify-between text-slate-200">
+                                <span>1x GULI Biotin Glow (الشعر)</span>
+                                <span>💅</span>
+                            </div>
+                            <div class="flex items-center justify-between text-slate-200 pt-2 border-t border-slate-800">
+                                <span>1x GULI Collagen Youth (البشرة)</span>
+                                <span>✨</span>
+                            </div>
+                            <div class="flex items-center justify-between text-slate-200 pt-2 border-t border-slate-800">
+                                <span>1x GULI Multivitamin (الطاقة)</span>
+                                <span>🍊</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-2 text-xs text-emerald-400 font-medium pt-1">
+                            <i class="fa-solid fa-gift"></i>
+                            <span>توصيل مجاني + هدية مجانية خاصة</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-emerald-800/80 mt-6 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-400 line-through">567 DH</span>
+                            <div class="text-3xl font-black text-emerald-400">449 <span class="text-xs text-slate-400">DH</span></div>
+                        </div>
+                        <button onclick="addToCart('b3', 'Pack Ultimate Trio (Biotin + Collagen + Multi)', 449, '👑')" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-6 py-3.5 rounded-2xl transition-all shadow-xl shadow-emerald-500/30 text-xs flex items-center gap-2">
+                            <span>اطلب الباك الأكثر طلباً</span>
+                            <i class="fa-solid fa-bolt"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bundle 4: Daily Energy -->
+                <div class="bg-slate-800/80 border border-slate-700/60 rounded-3xl p-6 flex flex-col justify-between relative hover:border-amber-500/50 transition-all shadow-xl">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold px-3 py-1 rounded-full">باك النشاط والمناعة ⚡</span>
+                            <span class="bg-rose-500 text-white text-[11px] font-black px-2.5 py-1 rounded-lg">وفر 58 DH</span>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white">Pack Daily Energy</h3>
+                        <p class="text-slate-300 text-xs leading-relaxed">مثالي للموظفين والرياضيين للتخلص من خمول فترة بعد الظهيرة والعياد.</p>
+
+                        <!-- Included items list -->
+                        <div class="bg-slate-900/60 rounded-2xl p-4 space-y-2 border border-slate-700/40 text-xs">
+                            <div class="flex items-center justify-between text-slate-200">
+                                <span>1x GULI Multivitamin (الطاقة والمناعة)</span>
+                                <span>🍊</span>
+                            </div>
+                            <div class="flex items-center justify-between text-slate-200 pt-2 border-t border-slate-800">
+                                <span>1x GULI Magnesium Relax (الراحة والتركيز)</span>
+                                <span>💜</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-2 text-xs text-emerald-400 font-medium pt-1">
+                            <i class="fa-solid fa-truck-fast"></i>
+                            <span>توصيل مجاني شامل للطلب</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-700/80 mt-6 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-400 line-through">378 DH</span>
+                            <div class="text-2xl font-black text-white">320 <span class="text-xs text-slate-400">DH</span></div>
+                        </div>
+                        <button onclick="addToCart('b4', 'Pack Daily Energy (Multi + Magnesium)', 320, '🎁')" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold px-5 py-3 rounded-2xl transition-all shadow-lg shadow-amber-500/20 text-xs flex items-center gap-2">
+                            <span>اطلب الباك</span>
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bundle 5: VIP Total Care (All 5 Products) -->
+                <div class="bg-slate-800/80 border border-slate-700/60 rounded-3xl p-6 flex flex-col justify-between relative hover:border-purple-500/50 transition-all shadow-xl md:col-span-2 lg:col-span-2">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-purple-500/20 text-purple-300 border border-purple-500/30 text-xs font-bold px-3 py-1 rounded-full">الباك الشامل الـ 5 كاملين 💎</span>
+                            <span class="bg-rose-500 text-white text-[11px] font-black px-2.5 py-1 rounded-lg">توفير ضخم: وفر 246 DH</span>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white">Pack VIP Total Care (5 في 1)</h3>
+                        <p class="text-slate-300 text-xs leading-relaxed">مجموعة المنتجات الخمسة كاملة لتغطية كافة احتياجاتك واحتياجات عائلتك اليومية مع أقصى نسبة تخفيض.</p>
+
+                        <!-- Included items horizontal grid -->
+                        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-center text-[11px]">
+                            <div class="bg-slate-900/60 p-2 rounded-xl border border-slate-700">
+                                <div>💅 Biotin</div>
+                            </div>
+                            <div class="bg-slate-900/60 p-2 rounded-xl border border-slate-700">
+                                <div>✨ Collagen</div>
+                            </div>
+                            <div class="bg-slate-900/60 p-2 rounded-xl border border-slate-700">
+                                <div>🌙 Melatonin</div>
+                            </div>
+                            <div class="bg-slate-900/60 p-2 rounded-xl border border-slate-700">
+                                <div>💜 Magnesium</div>
+                            </div>
+                            <div class="bg-slate-900/60 p-2 rounded-xl border border-slate-700 col-span-2 sm:col-span-1">
+                                <div>🍊 Multivitamin</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-2 text-xs text-emerald-400 font-medium pt-1">
+                            <i class="fa-solid fa-box-open"></i>
+                            <span>توصيل مجاني + هدية VIP خاصة داخل العلبة 🎁</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-700/80 mt-6 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-400 line-through">945 DH</span>
+                            <div class="text-3xl font-black text-white">699 <span class="text-xs text-slate-400">DH</span></div>
+                        </div>
+                        <button onclick="addToCart('b5', 'Pack VIP Total Care (المنتجات الـ 5 كاملين)', 699, '💎')" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold px-6 py-3.5 rounded-2xl transition-all shadow-lg shadow-purple-600/20 text-xs flex items-center gap-2">
+                            <span>اطلب الباك الشامل VIP</span>
+                            <i class="fa-solid fa-crown"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Why GULI Comparison Section -->
+    <section id="why-guli" class="py-16 lg:py-24 bg-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            
+            <div class="text-center max-w-3xl mx-auto space-y-3 mb-14">
+                <span class="text-xs font-bold text-emerald-600 bg-emerald-100/80 px-3 py-1 rounded-full uppercase tracking-wider">علاش غادي تعشق GULI؟</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900">الفرق بين حلوى GULI والمكملات التقليدية القديمة</h2>
+            </div>
+
+            <div class="max-w-4xl mx-auto overflow-x-auto">
+                <table class="w-full text-right border-collapse min-w-[500px]">
+                    <thead>
+                        <tr class="border-b-2 border-slate-200 text-slate-900 text-sm">
+                            <th class="py-4 px-4 font-bold">الميزة / الخاصية</th>
+                            <th class="py-4 px-4 font-extrabold text-emerald-600 bg-emerald-50 rounded-t-2xl text-center w-1/3">
+                                🍬 حلوى GULI
+                            </th>
+                            <th class="py-4 px-4 font-bold text-slate-400 text-center w-1/3">💊 الحبوب والأقراص القديمة</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-xs sm:text-sm text-slate-700 divide-y divide-slate-100">
+                        <tr>
+                            <td class="py-4 px-4 font-semibold">المذاق والطعم</td>
+                            <td class="py-4 px-4 text-center bg-emerald-50/50 font-bold text-emerald-700">لذيذ بمذاق الفواكه الطبيعية 🍓</td>
+                            <td class="py-4 px-4 text-center text-slate-400">طعم مر وغير محبب 🤢</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-4 font-semibold">سهولة الاستهلاك</td>
+                            <td class="py-4 px-4 text-center bg-emerald-50/50 font-bold text-emerald-700">تمضغها مباشرة بدون ماء 😋</td>
+                            <td class="py-4 px-4 text-center text-slate-400">تحتاج لكأس ماء وصعوبة في البلع 💧</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-4 font-semibold">تأثيرها على المعدة</td>
+                            <td class="py-4 px-4 text-center bg-emerald-50/50 font-bold text-emerald-700">خفيفة جداً وسريعة الامتصاص 🌿</td>
+                            <td class="py-4 px-4 text-center text-slate-400">قد تسبب حموضة وثقل بالمعدة ⚡</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-4 font-semibold">السكر والمواد الضارة</td>
+                            <td class="py-4 px-4 text-center bg-emerald-50/50 font-bold text-emerald-700">خالية من السكر المضاف 0% 🚫</td>
+                            <td class="py-4 px-4 text-center text-slate-400">تحتوي على جيلاتين ومواد حافظة ❌</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-4 font-semibold">الاستمرارية والالتزام</td>
+                            <td class="py-4 px-4 text-center bg-emerald-50/50 font-bold text-emerald-700 font-black text-emerald-600">كتتذكر تاخدها يومياً بحب 😍</td>
+                            <td class="py-4 px-4 text-center text-slate-400">كتنساها فالمجر بعد أيام 😅</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Reviews & Testimonials Section -->
+    <section id="reviews" class="py-16 lg:py-24 bg-slate-50 border-t border-slate-100">
+        <div class="container mx-auto px-4 sm:px-6">
+            
+            <div class="text-center max-w-3xl mx-auto space-y-3 mb-14">
+                <span class="text-xs font-bold text-amber-600 bg-amber-100 px-3 py-1 rounded-full uppercase tracking-wider">تجارب حقيقية</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900">شنو كايقولوا زبنائنا فالمغرب؟</h2>
+                <div class="flex justify-center items-center gap-1 text-amber-400 text-base">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <span class="text-xs font-bold text-slate-700 mr-2">أكثر من 1,200 تقييم إيجابي 5/5</span>
+                </div>
+            </div>
+
+            <!-- Reviews Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <!-- Review 1 -->
+                <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-rose-100 text-rose-600 font-bold flex items-center justify-center text-sm">
+                                س
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">سناء .م</h4>
+                                <p class="text-[11px] text-slate-400">الدار البيضاء • شراء مؤكد ✓</p>
+                            </div>
+                        </div>
+                        <span class="bg-rose-50 text-rose-600 text-[10px] font-bold px-2 py-1 rounded-md">Biotin Glow</span>
+                    </div>
+                    
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        "الصراحة جربت Biotin Glow وكان أول مرة نجرب مكمل على شكل حلوى. تساقط الشعر ديالي حبس بشكل ملحوظ بعد 3 أسابيع، والمذاق ديالها بحال الفراولة كنعشق ناخدها كل صباح!"
+                    </p>
+
+                    <div class="text-amber-400 text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 font-bold flex items-center justify-center text-sm">
+                                ع
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">عمر العراقي</h4>
+                                <p class="text-[11px] text-slate-400">الرباط • شراء مؤكد ✓</p>
+                            </div>
+                        </div>
+                        <span class="bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-1 rounded-md">Relax & Sleep</span>
+                    </div>
+
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        "خذيت باك النوم (Melatonin + Magnesium) حيت عندي خدمة فيها ستريس بزاف وماكنتش كننعس مرتاح. من النهار الأول نعست نعاس عميق وكنفيق ناشط وبدون خمول."
+                    </p>
+
+                    <div class="text-amber-400 text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 font-bold flex items-center justify-center text-sm">
+                                م
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">مريم بناني</h4>
+                                <p class="text-[11px] text-slate-400">طنجة • شراء مؤكد ✓</p>
+                            </div>
+                        </div>
+                        <span class="bg-emerald-50 text-emerald-600 text-[10px] font-bold px-2 py-1 rounded-md">Ultimate Trio</span>
+                    </div>
+
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        "خدت باك العناية الثلاثي الشحن وصلني فـ 24 ساعة لـطنجة والتغليف كان نقي بزاف. البشرة ديالي ولات فيها نضارة طبيعية وخففت عليا الإرهاق. شكراً GULI!"
+                    </p>
+
+                    <div class="text-amber-400 text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 lg:py-24 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 max-w-3xl">
+            
+            <div class="text-center space-y-3 mb-12">
+                <span class="text-xs font-bold text-emerald-600 bg-emerald-100/80 px-3 py-1 rounded-full uppercase tracking-wider">أسئلة كتردد بزاف</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900">كل ما تحتاج معرفته عن منتجات GULI</h2>
+            </div>
+
+            <!-- FAQ Items Accordion -->
+            <div class="space-y-4">
+
+                <div class="border border-slate-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq('faq1')" class="w-full text-right p-5 font-bold text-slate-900 text-sm sm:text-base flex justify-between items-center bg-slate-50/50 hover:bg-slate-50">
+                        <span>شحال من حبة خاصني ناخد فاليوم؟</span>
+                        <i id="faq1-icon" class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform"></i>
+                    </button>
+                    <div id="faq1" class="hidden p-5 text-xs sm:text-sm text-slate-600 bg-white border-t border-slate-100 leading-relaxed">
+                        الجرعة اليومية الموصى بها هي 2 حبات يومياً من كل منتج. تقدر تاخدهم مع الفطور أو خلال اليوم بدون الحاجة لشرب الماء.
+                    </div>
+                </div>
+
+                <div class="border border-slate-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq('faq2')" class="w-full text-right p-5 font-bold text-slate-900 text-sm sm:text-base flex justify-between items-center bg-slate-50/50 hover:bg-slate-50">
+                        <span>فوقاش كيبدا يبان المفعول والنتيجة؟</span>
+                        <i id="faq2-icon" class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform"></i>
+                    </button>
+                    <div id="faq2" class="hidden p-5 text-xs sm:text-sm text-slate-600 bg-white border-t border-slate-100 leading-relaxed">
+                        بالنسبة لمنتج النوم Melatonin والـ Magnesium فالنتيجة تكون فورية من اليوم الأول. أما بالنسبة للـ Biotin والـ Collagen الخاصة بالشعر والبشرة يلاحظ الفرق والنتائج الواضحة ابتداءً من الأسبوع الثاني إلى الثالث من الاستعمال المنتظم.
+                    </div>
+                </div>
+
+                <div class="border border-slate-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq('faq3')" class="w-full text-right p-5 font-bold text-slate-900 text-sm sm:text-base flex justify-between items-center bg-slate-50/50 hover:bg-slate-50">
+                        <span>كيفاش كيكون التوصيل وطريقة الأداء؟</span>
+                        <i id="faq3-icon" class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform"></i>
+                    </button>
+                    <div id="faq3" class="hidden p-5 text-xs sm:text-sm text-slate-600 bg-white border-t border-slate-100 leading-relaxed">
+                        التوصيل سريع جداً فجميع مدن المغرب (بين 24 لـ 48 ساعة). الأداء يكون بعد المعاينة والاستلام نقداً للعميل (Cash on Delivery).
+                    </div>
+                </div>
+
+                <div class="border border-slate-200 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq('faq4')" class="w-full text-right p-5 font-bold text-slate-900 text-sm sm:text-base flex justify-between items-center bg-slate-50/50 hover:bg-slate-50">
+                        <span>واش الحلوى فيها السكر ولا كتزيد فالوزن؟</span>
+                        <i id="faq4-icon" class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform"></i>
+                    </button>
+                    <div id="faq4" class="hidden p-5 text-xs sm:text-sm text-slate-600 bg-white border-t border-slate-100 leading-relaxed">
+                        لا أبداً! حلوى GULI خالية من السكر المضاف ومصنوعة من بكتين الفواكه الطبيعي. السعرات الحرارية منعدمة تقريباً ولا تسبب زيادة الوزن.
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 text-xs py-12 border-t border-slate-800">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+                
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-xl bg-emerald-500 flex items-center justify-center text-slate-950 font-black text-lg">G</div>
+                        <span class="text-xl font-black text-white">GULI Morocco</span>
+                    </div>
+                    <p class="leading-relaxed text-slate-400">
+                        البراند المغربي الرائد المخصص للمكملات الغذائية الطبيعية على شكل حلوى سهلة ولذيذة.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white text-sm mb-3">روابط سريعة</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#products" class="hover:text-emerald-400 transition-colors">المنتجات الخمسة</a></li>
+                        <li><a href="#bundles" class="hover:text-emerald-400 transition-colors">الباكات والعروض</a></li>
+                        <li><a href="#why-guli" class="hover:text-emerald-400 transition-colors">علاش GULI؟</a></li>
+                        <li><a href="#reviews" class="hover:text-emerald-400 transition-colors">آراء الزبناء</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white text-sm mb-3">خدمة الزبناء</h4>
+                    <ul class="space-y-2">
+                        <li>💬 واتساب: +212 600-000000</li>
+                        <li>📧 البريد: contact@guli.ma</li>
+                        <li>🚚 التوصيل: جميع المدن المغربية</li>
+                        <li>⏱️ أوقات العمل: 9:00 - 20:00 (يومياً)</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-3">
+                    <h4 class="font-bold text-white text-sm">ضمانات الشراء</h4>
+                    <div class="flex items-center gap-2 text-emerald-400 font-semibold">
+                        <i class="fa-solid fa-shield-halved text-base"></i>
+                        <span>منتجات أصيلة 100% مضمونة</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500">
+                        الدفع عند الاستلام مع إمكانية معاينة الطلب قبل الدفع.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="pt-8 border-t border-slate-800 text-center text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div>© 2026 GULI Nutrition Morocco. جميع الحقوق محفوظة.</div>
+                <div class="flex gap-4 text-slate-400 text-base">
+                    <a href="#" class="hover:text-emerald-400"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-emerald-400"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="hover:text-emerald-400"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="hover:text-emerald-400"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sliding Cart Drawer Container -->
+    <div id="cartOverlay" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden transition-opacity" onclick="toggleCartDrawer()"></div>
+
+    <aside id="cartDrawer" class="fixed top-0 left-0 h-full w-full sm:w-96 bg-white z-50 shadow-2xl transform -translate-x-full transition-transform duration-300 flex flex-col justify-between">
+        
+        <!-- Cart Header -->
+        <div class="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+            <div class="flex items-center gap-2 font-black text-slate-900 text-base">
+                <i class="fa-solid fa-bag-shopping text-emerald-600"></i>
+                <span>سلة التسوق ديالك</span>
+            </div>
+            <button onclick="toggleCartDrawer()" class="w-8 h-8 rounded-full bg-slate-200/60 hover:bg-slate-200 text-slate-600 flex items-center justify-center text-sm">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Free Shipping Progress Bar -->
+        <div class="bg-emerald-50 px-5 py-3 border-b border-emerald-100 text-xs">
+            <div id="shippingBarText" class="font-bold text-emerald-800 mb-1">
+                أضف 300 DH للحصول على توصيل مجاني 🚚
+            </div>
+            <div class="w-full bg-emerald-200 h-2 rounded-full overflow-hidden">
+                <div id="shippingProgress" class="bg-emerald-500 h-full w-0 transition-all duration-300"></div>
+            </div>
+        </div>
+
+        <!-- Cart Items List Container -->
+        <div id="cartItems" class="flex-1 overflow-y-auto p-5 space-y-4">
+            <!-- Dynamic Cart Items via JS -->
+            <div id="emptyCartMsg" class="text-center py-12 space-y-3">
+                <div class="text-4xl text-slate-300">🛍️</div>
+                <div class="text-slate-500 font-medium text-sm">السلة ديالك مزال خاوية</div>
+                <a href="#bundles" onclick="toggleCartDrawer()" class="inline-block px-5 py-2.5 bg-emerald-600 text-white font-bold rounded-xl text-xs">اكتشف الباكات والعروض</a>
+            </div>
+        </div>
+
+        <!-- Cart Footer & Checkout Form -->
+        <div class="p-5 border-t border-slate-100 bg-slate-50 space-y-3">
+            <div class="flex justify-between items-center font-bold text-slate-900 text-base">
+                <span>المجموع الكلي:</span>
+                <span id="cartSubtotal">0 DH</span>
+            </div>
+
+            <button id="checkoutBtn" onclick="openCheckoutModal()" disabled class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 text-white font-extrabold rounded-2xl shadow-lg transition-all text-sm flex items-center justify-center gap-2">
+                <span>تأكيد الطلب الآن (الدفع عند الاستلام)</span>
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+        </div>
+
+    </aside>
+
+    <!-- Order Checkout Modal -->
+    <div id="checkoutModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-md rounded-3xl p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            
+            <button onclick="closeCheckoutModal()" class="absolute top-4 left-4 text-slate-400 hover:text-slate-600 text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center space-y-2 mb-6">
+                <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-xl mx-auto font-bold">
+                    📝
+                </div>
+                <h3 class="text-xl font-extrabold text-slate-900">معلومات توصيل الطلب</h3>
+                <p class="text-xs text-slate-500">عمر المعلومات ديالك والتوصيل غيكون حتى لباب الدار الدفع عند الاستلام.</p>
+            </div>
+
+            <form id="orderForm" onsubmit="handleOrderSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">الاسم الكامل *</label>
+                    <input type="text" required placeholder="مثال: سناء العلمي" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-emerald-500 outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">رقم الهاتف (الواتساب) *</label>
+                    <input type="tel" required placeholder="06 00 00 00 00" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-emerald-500 outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">المدينة *</label>
+                    <input type="text" required placeholder="مثال: الدار البيضاء، الرباط..." class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-emerald-500 outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">العنوان الكامل *</label>
+                    <textarea required rows="2" placeholder="حي، زنقة، رقم الدار..." class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-emerald-500 outline-none"></textarea>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 flex justify-between items-center text-xs font-bold">
+                    <span>إجمالي الواجب أدائه:</span>
+                    <span id="modalTotal" class="text-emerald-600 text-base">0 DH</span>
+                </div>
+
+                <button type="submit" class="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold rounded-2xl shadow-xl transition-all text-sm">
+                    ✅ تأكيد إرسال الطلبية الآن
+                </button>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- Success Order Toast Notification -->
+    <div id="successToast" class="fixed bottom-6 right-6 bg-slate-900 text-white px-6 py-4 rounded-2xl shadow-2xl z-50 hidden flex items-center gap-3 border border-emerald-500/50">
+        <span class="text-2xl">🎉</span>
+        <div>
+            <div class="font-bold text-sm">تم تسجيل طلبك بنجاح!</div>
+            <div class="text-xs text-slate-400">سيتصل بك فريقنا لتأكيد الشحن قريباً.</div>
+        </div>
+    </div>
+
+    <!-- Main Interactive Script Logic -->
+    <script>
+        // Shopping Cart State
+        let cart = [];
+
+        // Add Product or Bundle to Cart
+        function addToCart(id, name, price, icon) {
+            const existingIndex = cart.findIndex(item => item.id === id);
+            
+            if (existingIndex > -1) {
+                cart[existingIndex].qty += 1;
+            } else {
+                cart.push({ id, name, price, icon, qty: 1 });
+            }
+
+            updateCartUI();
+            toggleCartDrawer(true); // Open drawer automatically
+        }
+
+        // Remove item from cart
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartUI();
+        }
+
+        // Change item quantity
+        function changeQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.qty += delta;
+                if (item.qty <= 0) {
+                    removeFromCart(id);
+                } else {
+                    updateCartUI();
+                }
+            }
+        }
+
+        // Update Cart Drawer UI
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cartItems');
+            const cartBadge = document.getElementById('cartBadge');
+            const cartSubtotal = document.getElementById('cartSubtotal');
+            const modalTotal = document.getElementById('modalTotal');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            const shippingProgress = document.getElementById('shippingProgress');
+            const shippingBarText = document.getElementById('shippingBarText');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            cartBadge.textContent = totalItems;
+            cartSubtotal.textContent = `${subtotal} DH`;
+            modalTotal.textContent = `${subtotal} DH`;
+
+            // Enable / Disable Checkout Button
+            checkoutBtn.disabled = cart.length === 0;
+
+            // Update Free Shipping Progress Bar (Threshold: 300 DH)
+            const freeShippingLimit = 300;
+            const progressPct = Math.min((subtotal / freeShippingLimit) * 100, 100);
+            shippingProgress.style.width = `${progressPct}%`;
+
+            if (subtotal >= freeShippingLimit) {
+                shippingBarText.innerHTML = '🎉 مبروك! حصلت على توصيل مجاني لكل مدن المغرب';
+            } else {
+                const diff = freeShippingLimit - subtotal;
+                shippingBarText.innerHTML = `أضف <span class="font-black">${diff} DH</span> إضافية للحصول على توصيل مجاني 🚚`;
+            }
+
+            // Render Items HTML
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="text-center py-12 space-y-3">
+                        <div class="text-4xl text-slate-300">🛍️</div>
+                        <div class="text-slate-500 font-medium text-sm">السلة ديالك مزال خاوية</div>
+                        <a href="#bundles" onclick="toggleCartDrawer()" class="inline-block px-5 py-2.5 bg-emerald-600 text-white font-bold rounded-xl text-xs">اكتشف الباكات والعروض</a>
+                    </div>
+                `;
+            } else {
+                cartItemsContainer.innerHTML = cart.map(item => `
+                    <div class="flex items-center justify-between bg-slate-50 p-3.5 rounded-2xl border border-slate-100">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-xl shadow-sm">
+                                ${item.icon}
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-slate-900 text-xs">${item.name}</h5>
+                                <span class="text-emerald-600 font-black text-xs">${item.price * item.qty} DH</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-2">
+                            <div class="flex items-center bg-white rounded-lg border border-slate-200 text-xs">
+                                <button onclick="changeQty('${item.id}', -1)" class="px-2 py-1 text-slate-500 hover:text-slate-900">-</button>
+                                <span class="px-2 font-bold">${item.qty}</span>
+                                <button onclick="changeQty('${item.id}', 1)" class="px-2 py-1 text-slate-500 hover:text-slate-900">+</button>
+                            </div>
+                            <button onclick="removeFromCart('${item.id}')" class="text-rose-400 hover:text-rose-600 text-xs p-1">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Toggle Cart Drawer Visibility
+        function toggleCartDrawer(forceOpen = false) {
+            const drawer = document.getElementById('cartDrawer');
+            const overlay = document.getElementById('cartOverlay');
+
+            if (forceOpen || drawer.classList.contains('-translate-x-full')) {
+                drawer.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+            } else {
+                drawer.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+            }
+        }
+
+        // Toggle Mobile Menu Drawer
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Toggle FAQ Accordion
+        function toggleFaq(id) {
+            const el = document.getElementById(id);
+            const icon = document.getElementById(`${id}-icon`);
+            el.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        // Open Checkout Modal
+        function openCheckoutModal() {
+            if (cart.length === 0) return;
+            toggleCartDrawer(false);
+            document.getElementById('checkoutModal').classList.remove('hidden');
+        }
+
+        // Close Checkout Modal
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').classList.add('hidden');
+        }
+
+        // Handle Order Form Submission
+        function handleOrderSubmit(e) {
+            e.preventDefault();
+            closeCheckoutModal();
+
+            // Clear Cart State
+            cart = [];
+            updateCartUI();
+
+            // Show Toast Notification
+            const toast = document.getElementById('successToast');
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+
+</body>
+</html>
