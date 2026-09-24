@@ -220,10 +220,10 @@ body { font-family: 'Readex Pro', sans-serif; background-color: #FAFAFC; }
 <span class="font-bold text-slate-700">الطلب: <span id="fQty">1 علبة</span></span>
 <span class="font-black text-emerald-700 text-lg"><span id="fTotal">219</span> DH</span>
 </div>
-<button type="submit" class="w-full py-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold rounded-2xl shadow-xl shadow-emerald-600/25 text-base flex items-center justify-center gap-2">
-<i class="fa-brands fa-whatsapp text-xl"></i> أأكدي الطلب دابا
+<button type="submit" id="submitBtn" class="w-full py-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold rounded-2xl shadow-xl shadow-emerald-600/25 text-base flex items-center justify-center gap-2">
+<i class="fa-solid fa-basket-shopping text-xl"></i> أأكدي الطلب دابا
 </button>
-<p class="text-center text-[11px] text-slate-400">غادي يفتح واتساب باش نأكدو الطلب معك مباشرة</p>
+<p class="text-center text-[11px] text-slate-400">غادي نتصلو بيك فأقرب وقت باش نأكدو الطلب 📞</p>
 </form>
 </div>
 </div>
@@ -283,22 +283,49 @@ function selectTier(qty) {
   document.getElementById("fTotal").textContent = t.price;
 }
 
-function submitOrder(e) {
+async function submitOrder(e) {
   e.preventDefault();
   const name = document.getElementById("fName").value.trim();
   const phone = document.getElementById("fPhone").value.trim();
   const city = document.getElementById("fCity").value.trim();
   const address = document.getElementById("fAddress").value.trim();
   const t = TIERS.find(t => t.qty === selectedTier);
-  let msg = "سلام GULI Nutrition 👋\n";
-  msg += "بغيت نطلب: " + PRODUCT + "\n";
-  msg += "الباك: " + selectedTier + (selectedTier === 1 ? " علبة" : " علب") + " — " + t.price + " DH\n";
-  msg += "الاسم: " + name + "\n";
-  msg += "الهاتف: " + phone + "\n";
-  msg += "المدينة: " + city + "\n";
-  if (address) msg += "العنوان: " + address + "\n";
-  msg += "التوصيل مجاني + الدفع عند الاستلام ✅";
-  window.open("https://wa.me/212616830536?text=" + encodeURIComponent(msg), "_blank");
+  const btn = document.getElementById("submitBtn");
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin text-xl"></i> كنسجلو الطلب ديالك...';
+  try {
+    const res = await fetch("https://base44.app/api/apps/6a0cc14a62de2fbedbb37484/functions/createGuliOrder", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        client_name: name, phone: phone, city: city, address: address,
+        product: PRODUCT, pack_qty: selectedTier, total_price: t.price
+      })
+    });
+    const data = await res.json();
+    if (!data.success) throw new Error(data.error || "failed");
+    document.getElementById("orderForm").innerHTML = `
+      <div class="text-center py-8 space-y-4">
+        <div class="text-6xl">🎉</div>
+        <h3 class="text-2xl font-black text-slate-900">تسجل الطلب ديالك بنجاح!</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">شكراً على الثقة 🌿 غادي نتصلو بيك فأقرب وقت باش نأكدو الطلب.<br>التوصيل مجاني والدفع عند الاستلام.</p>
+        <div class="bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3 text-sm font-bold text-emerald-700 inline-block">رقم الطلب: ORDER-<span dir="ltr">\${data.order_id.slice(-6).toUpperCase()}</span></div>
+        <div class="text-xs text-slate-400">ملخص الطلب: \${PRODUCT} — \${selectedTier} (\${selectedTier === 1 ? "علبة" : "علب"}) — \${t.price} DH</div>
+      </div>`;
+  } catch (err) {
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fa-solid fa-basket-shopping text-xl"></i> أأكدي الطلب دابا';
+    alert("وقع مشكل فالتسجيل، غادي نحولوك لواتساب باش تكمل الطلب.");
+    let msg = "سلام GULI Nutrition 👋\n";
+    msg += "بغيت نطلب: " + PRODUCT + "\n";
+    msg += "الباك: " + selectedTier + (selectedTier === 1 ? " علبة" : " علب") + " — " + t.price + " DH\n";
+    msg += "الاسم: " + name + "\n";
+    msg += "الهاتف: " + phone + "\n";
+    msg += "المدينة: " + city + "\n";
+    if (address) msg += "العنوان: " + address + "\n";
+    msg += "التوصيل مجاني + الدفع عند الاستلام ✅";
+    window.open("https://wa.me/212616830536?text=" + encodeURIComponent(msg), "_blank");
+  }
   return false;
 }
 </script>
