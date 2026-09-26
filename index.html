@@ -549,12 +549,42 @@
                         </div>
                     </div>
 
+                        <div>
+                            <select id="qsel-b4" class="w-full bg-slate-900/60 border border-slate-700 rounded-xl px-3 py-2.5 text-xs font-bold text-white outline-none focus:border-emerald-500 cursor-pointer">
+                                <option value="1">📅 شهر واحد — باك واحد</option>
+                                <option value="2">📅 شهرين — 2 باكات</option>
+                                <option value="3">📅 3 أشهر — 3 باكات</option>
+                                <option value="4">📅 4 أشهر — 4 باكات</option>
+                                <option value="5">📅 5 أشهر — 5 باكات</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <select id="qsel-b2" class="w-full bg-slate-900/60 border border-slate-700 rounded-xl px-3 py-2.5 text-xs font-bold text-white outline-none focus:border-emerald-500 cursor-pointer">
+                                <option value="1">📅 شهر واحد — باك واحد</option>
+                                <option value="2">📅 شهرين — 2 باكات</option>
+                                <option value="3">📅 3 أشهر — 3 باكات</option>
+                                <option value="4">📅 4 أشهر — 4 باكات</option>
+                                <option value="5">📅 5 أشهر — 5 باكات</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <select id="qsel-b1" class="w-full bg-slate-900/60 border border-slate-700 rounded-xl px-3 py-2.5 text-xs font-bold text-white outline-none focus:border-emerald-500 cursor-pointer">
+                                <option value="1">📅 شهر واحد — باك واحد</option>
+                                <option value="2">📅 شهرين — 2 باكات</option>
+                                <option value="3">📅 3 أشهر — 3 باكات</option>
+                                <option value="4">📅 4 أشهر — 4 باكات</option>
+                                <option value="5">📅 5 أشهر — 5 باكات</option>
+                            </select>
+                        </div>
+
                     <div class="pt-6 border-t border-slate-700/80 mt-6 flex items-center justify-between">
                         <div>
                             <span class="text-xs text-slate-400 line-through">438 DH</span>
                             <div class="text-2xl font-black text-white">399 <span class="text-xs text-slate-400">DH</span></div>
                         </div>
-                        <button onclick="addToCart('b1', 'Pack Beauty Glow (Biotin + Collagen)', 399, '🎁')" class="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold px-5 py-3 rounded-2xl transition-all shadow-lg shadow-pink-500/20 text-xs flex items-center gap-2">
+                        <button onclick="addToCart('b1', 'Pack Beauty Glow (Biotin + Collagen)', 399, '🎁', null, parseInt(document.getElementById('qsel-b1').value))" class="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold px-5 py-3 rounded-2xl transition-all shadow-lg shadow-pink-500/20 text-xs flex items-center gap-2">
                             <span>اطلب الباك</span>
                             <i class="fa-solid fa-cart-shopping"></i>
                         </button>
@@ -601,7 +631,7 @@
                             <span class="text-xs text-slate-400 line-through">438 DH</span>
                             <div class="text-2xl font-black text-white">399 <span class="text-xs text-slate-400">DH</span></div>
                         </div>
-                        <button onclick="addToCart('b2', 'Pack Relax & Sleep (Melatonin + Magnesium)', 399, '🎁')" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold px-5 py-3 rounded-2xl transition-all shadow-lg shadow-blue-600/20 text-xs flex items-center gap-2">
+                        <button onclick="addToCart('b2', 'Pack Relax & Sleep (Melatonin + Magnesium)', 399, '🎁', null, parseInt(document.getElementById('qsel-b2').value))" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold px-5 py-3 rounded-2xl transition-all shadow-lg shadow-blue-600/20 text-xs flex items-center gap-2">
                             <span>اطلب الباك</span>
                             <i class="fa-solid fa-cart-shopping"></i>
                         </button>
@@ -652,12 +682,22 @@
                         </div>
                     </div>
 
+                        <div>
+                            <select id="qsel-b3" class="w-full bg-slate-900/60 border border-slate-700 rounded-xl px-3 py-2.5 text-xs font-bold text-white outline-none focus:border-emerald-500 cursor-pointer">
+                                <option value="1">📅 شهر واحد — باك واحد</option>
+                                <option value="2">📅 شهرين — 2 باكات</option>
+                                <option value="3">📅 3 أشهر — 3 باكات</option>
+                                <option value="4">📅 4 أشهر — 4 باكات</option>
+                                <option value="5">📅 5 أشهر — 5 باكات</option>
+                            </select>
+                        </div>
+
                     <div class="pt-6 border-t border-emerald-800/80 mt-6 flex items-center justify-between">
                         <div>
                             <span class="text-xs text-slate-400 line-through">657 DH</span>
                             <div class="text-3xl font-black text-emerald-400">449 <span class="text-xs text-slate-400">DH</span></div>
                         </div>
-                        <button onclick="addToCart('b3', 'Pack Ultimate Trio (Biotin + Collagen + Multi)', 569, '👑')" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-6 py-3.5 rounded-2xl transition-all shadow-xl shadow-emerald-500/30 text-xs flex items-center gap-2">
+                        <button onclick="addToCart('b3', 'Pack Ultimate Trio (Biotin + Collagen + Multi)', 569, '👑', null, parseInt(document.getElementById('qsel-b3').value))" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-6 py-3.5 rounded-2xl transition-all shadow-xl shadow-emerald-500/30 text-xs flex items-center gap-2">
                             <span>اطلب الباك الأكثر طلباً</span>
                             <i class="fa-solid fa-bolt"></i>
                         </button>
@@ -704,7 +744,7 @@
                             <span class="text-xs text-slate-400 line-through">438 DH</span>
                             <div class="text-2xl font-black text-white">399 <span class="text-xs text-slate-400">DH</span></div>
                         </div>
-                        <button onclick="addToCart('b4', 'Pack Daily Energy (Multi + Magnesium)', 399, '🎁')" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold px-5 py-3 rounded-2xl transition-all shadow-lg shadow-amber-500/20 text-xs flex items-center gap-2">
+                        <button onclick="addToCart('b4', 'Pack Daily Energy (Multi + Magnesium)', 399, '🎁', null, parseInt(document.getElementById('qsel-b4').value))" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold px-5 py-3 rounded-2xl transition-all shadow-lg shadow-amber-500/20 text-xs flex items-center gap-2">
                             <span>اطلب الباك</span>
                             <i class="fa-solid fa-cart-shopping"></i>
                         </button>
@@ -756,12 +796,22 @@
                         </div>
                     </div>
 
+                        <div>
+                            <select id="qsel-b5" class="w-full bg-slate-900/60 border border-slate-700 rounded-xl px-3 py-2.5 text-xs font-bold text-white outline-none focus:border-emerald-500 cursor-pointer">
+                                <option value="1">📅 شهر واحد — باك واحد</option>
+                                <option value="2">📅 شهرين — 2 باكات</option>
+                                <option value="3">📅 3 أشهر — 3 باكات</option>
+                                <option value="4">📅 4 أشهر — 4 باكات</option>
+                                <option value="5">📅 5 أشهر — 5 باكات</option>
+                            </select>
+                        </div>
+
                     <div class="pt-6 border-t border-slate-700/80 mt-6 flex items-center justify-between">
                         <div>
                             <span class="text-xs text-slate-400 line-through">1095 DH</span>
                             <div class="text-3xl font-black text-white">699 <span class="text-xs text-slate-400">DH</span></div>
                         </div>
-                        <button onclick="addToCart('b5', 'Pack VIP Total Care (المنتجات الـ 5 كاملين)', 899, '💎')" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold px-6 py-3.5 rounded-2xl transition-all shadow-lg shadow-purple-600/20 text-xs flex items-center gap-2">
+                        <button onclick="addToCart('b5', 'Pack VIP Total Care (المنتجات الـ 5 كاملين)', 899, '💎', null, parseInt(document.getElementById('qsel-b5').value))" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold px-6 py-3.5 rounded-2xl transition-all shadow-lg shadow-purple-600/20 text-xs flex items-center gap-2">
                             <span>اطلب الباك الشامل VIP</span>
                             <i class="fa-solid fa-crown"></i>
                         </button>
@@ -1223,6 +1273,7 @@
                     <span>إجمالي الواجب أدائه:</span>
                     <span id="modalTotal" class="text-emerald-600 text-base">0 DH</span>
                 </div>
+                <p class="text-[10px] text-slate-400 text-center mt-1">⏳ كل علبة/باك كتكفي شهر كامل — العدد اللي كتختار = عدد الشهور</p>
 
                 <button type="submit" class="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold rounded-2xl shadow-xl transition-all text-sm">
                     ✅ تأكيد إرسال الطلبية الآن
@@ -1247,13 +1298,14 @@
         let cart = [];
 
         // Add Product or Bundle to Cart
-        function addToCart(id, name, price, icon, img) {
+        function addToCart(id, name, price, icon, img, qty) {
+            qty = qty || 1;
             const existingIndex = cart.findIndex(item => item.id === id);
             
             if (existingIndex > -1) {
-                cart[existingIndex].qty += 1;
+                cart[existingIndex].qty += qty;
             } else {
-                cart.push({ id, name, price, icon, img: img || null, qty: 1 });
+                cart.push({ id, name, price, icon, img: img || null, qty: qty });
             }
 
             updateCartUI();
@@ -1320,6 +1372,7 @@
                             <div>
                                 <h5 class="font-bold text-slate-900 text-xs">${item.name}</h5>
                                 <span class="text-emerald-600 font-black text-xs">${item.price * item.qty} DH</span>
+                                <div class="text-[10px] text-slate-400 mt-0.5">⏳ المدة: ${item.qty === 1 ? 'شهر واحد' : item.qty === 2 ? 'شهرين' : item.qty + ' أشهر'}</div>
                             </div>
                         </div>
 
