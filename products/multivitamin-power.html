@@ -75,6 +75,15 @@
   .bounce-slow { animation: bouncey 3.5s ease-in-out infinite; }
   @keyframes bouncey { 0%,100% { transform: translateY(0) rotate(-1deg);} 50% { transform: translateY(-12px) rotate(1deg);} }
 </style>
+<!-- TikTok Pixel -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+  ttq.load('CRA5D93C77UFBBI24CQG');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<script>window.addEventListener('load',function(){try{ttq.track('ViewContent',{content_type:'product',content_name:(typeof PRODUCT!=='undefined'?PRODUCT:document.title),currency:'MAD'})}catch(e){}});</script>
 </head>
 <body class="text-slate-800 antialiased">
 
@@ -550,6 +559,7 @@ async function submitOrder(e) {
     });
     const data = await res.json();
     if (!data.success) throw new Error(data.error || "failed");
+    try{ttq.track('PlaceAnOrder',{content_type:'product',content_name:PRODUCT,value:t.price,currency:'MAD',quantity:1});ttq.track('CompletePayment',{content_type:'product',content_name:PRODUCT,value:t.price,currency:'MAD',quantity:1});}catch(_){}
     document.getElementById("orderForm").innerHTML = `
       <div class="text-center py-8 space-y-4">
         <div class="text-6xl">🎉</div>
